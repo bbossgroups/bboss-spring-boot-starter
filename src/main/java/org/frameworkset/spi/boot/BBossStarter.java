@@ -32,7 +32,7 @@ import java.util.Map;
  */
 public class BBossStarter extends BaseBBossProperties{
 	@Autowired
-	private BaseBBossProperties properties;
+	private BBossProperties properties;
 	private static final Logger log = LoggerFactory.getLogger(BBossStarter.class);
 	public void start() {
 
