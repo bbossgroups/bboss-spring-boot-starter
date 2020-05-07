@@ -31,7 +31,7 @@ public class BBossAutoConfiguration {
 	}
 	@Bean(initMethod = "start")
 	@ConditionalOnMissingBean
-	public BBossStarter bbossESStarter() {
+	public BBossStarter bbossStarter() {
 		return new BBossStarter();
 	}
 }
