@@ -238,6 +238,7 @@ public abstract class BaseBBossProperties {
 		private String supportedProtocols;
 		private String truststore;
 		private String trustPassword;
+		private String httpClientBuilderCallback;
 		/**
 		 * 每次获取connection时校验连接，true，校验，false不校验，有性能开销，推荐采用
 		 * validateAfterInactivity来控制连接是否有效
@@ -562,6 +563,14 @@ public abstract class BaseBBossProperties {
 		public void setHealthCheckInterval(String healthCheckInterval) {
 			this.healthCheckInterval = healthCheckInterval;
 		}
+
+		public String getHttpClientBuilderCallback() {
+			return httpClientBuilderCallback;
+		}
+
+		public void setHttpClientBuilderCallback(String httpClientBuilderCallback) {
+			this.httpClientBuilderCallback = httpClientBuilderCallback;
+		}
 	}
 
 
@@ -687,6 +696,8 @@ public abstract class BaseBBossProperties {
 				properties.put(name + "http.truststore",this.getHttp().getTruststore());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getTrustPassword()))
 				properties.put(name + "http.trustPassword",this.getHttp().getTrustPassword());
+			if(SimpleStringUtil.isNotEmpty(this.getHttp().getHttpClientBuilderCallback()))
+				properties.put(name + "http.httpClientBuilderCallback",this.getHttp().getHttpClientBuilderCallback());
 
 			/**
 			 *
