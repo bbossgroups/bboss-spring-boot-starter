@@ -224,6 +224,7 @@ public abstract class BaseBBossProperties {
 		private String connectionRequestTimeout;
 		private String automaticRetriesDisabled;
 		private String retryTime;
+		private String backoffAuth;
 		private String retryInterval;
 		private String maxLineLength;
 		private String maxHeaderCount;
@@ -571,6 +572,14 @@ public abstract class BaseBBossProperties {
 		public void setHttpClientBuilderCallback(String httpClientBuilderCallback) {
 			this.httpClientBuilderCallback = httpClientBuilderCallback;
 		}
+
+		public String getBackoffAuth() {
+			return backoffAuth;
+		}
+
+		public void setBackoffAuth(String backoffAuth) {
+			this.backoffAuth = backoffAuth;
+		}
 	}
 
 
@@ -643,7 +652,8 @@ public abstract class BaseBBossProperties {
 				properties.put(name + "http.connectionRequestTimeout",this.getHttp().getConnectionRequestTimeout());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getAutomaticRetriesDisabled()))
 				properties.put(name + "http.automaticRetriesDisabled",this.getHttp().getAutomaticRetriesDisabled());
-
+			if(SimpleStringUtil.isNotEmpty(this.getHttp().getBackoffAuth()))
+				properties.put(name+"http.backoffAuth",this.getHttp().getBackoffAuth());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getRetryTime()))
 				properties.put(name + "http.retryTime",this.getHttp().getRetryTime());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getRetryInterval()))
