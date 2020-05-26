@@ -246,7 +246,14 @@ public abstract class BaseBBossProperties {
 		 * 默认值false
 		 */
 		private String staleConnectionCheckEnabled = "false";
+		private String encodedAuthCharset;
+		public void setEncodedAuthCharset(String encodedAuthCharset) {
+			this.encodedAuthCharset = encodedAuthCharset;
+		}
 
+		public String getEncodedAuthCharset() {
+			return encodedAuthCharset;
+		}
 
 		/**
 		 *
@@ -741,6 +748,9 @@ public abstract class BaseBBossProperties {
 				properties.put(name + "http.authAccount",this.getHttp().getAuthAccount());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getAuthPassword() ))
 				properties.put(name + "http.authPassword",this.getHttp().getAuthPassword());
+
+			if(SimpleStringUtil.isNotEmpty(this.getHttp().getEncodedAuthCharset()))
+				properties.put(name+"http.encodedAuthCharset",this.getHttp().getEncodedAuthCharset());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getHosts()))
 				properties.put(name + "http.hosts",this.getHttp().getHosts());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getHealth()))
