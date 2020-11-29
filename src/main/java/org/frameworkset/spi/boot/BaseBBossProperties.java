@@ -283,7 +283,20 @@ public abstract class BaseBBossProperties {
 		private String health;
 		private String routing;
 		private String healthCheckInterval;
+		private String failAllContinue;
 		private DiscoverService discoverService;
+
+		public void setFailAllContinue(String failAllContinue) {
+			this.failAllContinue = failAllContinue;
+		}
+
+		public String getFailAllContinue() {
+			return failAllContinue;
+		}
+
+		public String getStaleConnectionCheckEnabled() {
+			return staleConnectionCheckEnabled;
+		}
 
 		public void setName(String name) {
 			this.name = name;
@@ -452,9 +465,7 @@ public abstract class BaseBBossProperties {
 			this.customHttpRequestRetryHandler = customHttpRequestRetryHandler;
 		}
 
-		public String isStaleConnectionCheckEnabled() {
-			return staleConnectionCheckEnabled;
-		}
+
 
 		public void setStaleConnectionCheckEnabled(String staleConnectionCheckEnabled) {
 			this.staleConnectionCheckEnabled = staleConnectionCheckEnabled;
@@ -689,8 +700,8 @@ public abstract class BaseBBossProperties {
 				properties.put(name + "http.hostnameVerifier",this.getHttp().getHostnameVerifier());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getValidateAfterInactivity() ))
 				properties.put(name + "http.validateAfterInactivity",this.getHttp().getValidateAfterInactivity());
-			if(SimpleStringUtil.isNotEmpty(this.getHttp().isStaleConnectionCheckEnabled()))
-				properties.put(name + "http.staleConnectionCheckEnabled",this.getHttp().isStaleConnectionCheckEnabled());
+			if(SimpleStringUtil.isNotEmpty(this.getHttp().getStaleConnectionCheckEnabled()))
+				properties.put(name + "http.staleConnectionCheckEnabled",this.getHttp().getStaleConnectionCheckEnabled());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getCustomHttpRequestRetryHandler()))
 				properties.put(name + "http.customHttpRequestRetryHandler",this.getHttp().getCustomHttpRequestRetryHandler());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getEvictExpiredConnections()))
@@ -757,8 +768,10 @@ public abstract class BaseBBossProperties {
 				properties.put(name + "http.health",this.getHttp().getHealth());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getRouting()))
 				properties.put(name + "http.routing",this.getHttp().getRouting());
-			if(SimpleStringUtil.isNotEmpty(this.getHttp().getRouting()))
+			if(SimpleStringUtil.isNotEmpty(this.getHttp().getHealthCheckInterval()))
 				properties.put(name + "http.healthCheckInterval",this.getHttp().getHealthCheckInterval());
+			if(SimpleStringUtil.isNotEmpty(this.getHttp().getFailAllContinue()))
+				properties.put(name + "http.failAllContinue",this.getHttp().getFailAllContinue());
 
 			if(this.getHttp().getDiscoverService()  != null) {
 				if (SimpleStringUtil.isNotEmpty(this.getHttp().getDiscoverService().getServiceClass()))
