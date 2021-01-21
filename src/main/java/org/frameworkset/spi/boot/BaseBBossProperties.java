@@ -56,6 +56,10 @@ public abstract class BaseBBossProperties {
 		private String initSize;
 		private String showSql;
 		private String dbtype;
+
+
+
+		private String columnLableUpperCase ;
 		private String dbAdaptor;
 		private String jdbcFetchSize;
 		private String datasources;
@@ -110,7 +114,13 @@ public abstract class BaseBBossProperties {
 		public String getValidateSQL() {
 			return validateSQL;
 		}
+		public String getColumnLableUpperCase() {
+			return columnLableUpperCase;
+		}
 
+		public void setColumnLableUpperCase(String columnLableUpperCase) {
+			this.columnLableUpperCase = columnLableUpperCase;
+		}
 		public void setValidateSQL(String validateSQL) {
 			this.validateSQL = validateSQL;
 		}
