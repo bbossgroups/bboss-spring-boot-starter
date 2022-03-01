@@ -2,6 +2,15 @@
 
 bboss 持久层和http proxy spring boot集成组件
 
+# 版本构建方法
+
+gradle clean publishToMavenLocal
+
+需要通过gradle构建发布版本,gradle安装配置参考文档：
+
+https://esdoc.bbossgroups.com/#/bboss-build
+
+
 配置样例：
 
 ```properties
