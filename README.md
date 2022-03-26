@@ -213,7 +213,7 @@ public class Db2DBdemo implements InitializingBean {
 }
 ```
 
-jdk要求： jdk 1.7+
+jdk要求： jdk 1.8+
 
 
 
