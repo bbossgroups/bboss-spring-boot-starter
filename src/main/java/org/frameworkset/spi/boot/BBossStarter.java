@@ -18,6 +18,8 @@ import com.frameworkset.common.poolman.ConfigSQLExecutor;
 import com.frameworkset.common.poolman.util.DBConf;
 import com.frameworkset.common.poolman.util.SQLManager;
 import org.frameworkset.spi.assemble.PropertiesContainer;
+import org.frameworkset.spi.assemble.PropertiesInterceptor;
+import org.frameworkset.spi.assemble.PropertyContext;
 import org.frameworkset.spi.remote.http.ClientConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,26 +55,60 @@ public class BBossStarter extends BaseBBossProperties{
 		 * 							.setValidateSQL("select 1")
 		 * 							.setUsePool(false);//是否使用连接池
 		 */
-
-		initDs();
 		initHttp();
+		initDs();
+
 	}
+
 	private void initDs(){
+		String temp = null;
+		if(this.propertiesInterceptor == null){
+			temp = properties.getPropertiesInterceptor();
+		}
+		else{
+			temp = propertiesInterceptor;
+		}
+		if(temp != null && !temp.trim().equals("")){
+			temp = temp.trim();
+
+		}
 		if(this.getDb() == null ){
 			if(  properties.getDb() != null && properties.getDb().getUrl() != null){
+				try {
+					Class clz = Class.forName(temp);
+					PropertiesInterceptor propertiesInterceptor = (PropertiesInterceptor) clz.newInstance();
+					PropertyContext propertyContext = new PropertyContext();
+					propertyContext.setValue(properties.getDb());
+					propertiesInterceptor.convert(propertyContext);
+				}
+				catch (Exception e){
+					log.error("Init Ds "+temp,e);
+				}
 				initDS(properties.getDb());
 			}
 		}
 		else{
-			if(getDb().getUrl() != null)
+			if(getDb().getUrl() != null) {
+				try {
+					Class clz = Class.forName(temp);
+					PropertiesInterceptor propertiesInterceptor = (PropertiesInterceptor) clz.newInstance();
+					PropertyContext propertyContext = new PropertyContext();
+					propertyContext.setValue(getDb());
+					propertiesInterceptor.convert(propertyContext);
+				}
+				catch (Exception e){
+					log.error("Init Ds "+temp,e);
+				}
 				initDS(getDb());
+			}
 		}
 	}
-	private void initHttp(){
+	private PropertiesContainer initHttp(){
+		PropertiesContainer propertiesContainer = null;
 		if(this.getHttp() == null){
 			if(this.properties.getHttp() != null){
 				Map<String,String> properties = this.properties.buildProperties();
-				PropertiesContainer propertiesContainer = new PropertiesContainer();
+				propertiesContainer = new PropertiesContainer();
 				propertiesContainer.addAll(properties);
 				String[] httpNames = this.properties.getHttp().getName() != null?new String[]{this.properties.getHttp().getName()}:new String[]{"default"};
 				//初始化Http连接池
@@ -81,12 +117,13 @@ public class BBossStarter extends BaseBBossProperties{
 		}
 		else{
 			Map<String,String> properties = this.buildProperties();
-			PropertiesContainer propertiesContainer = new PropertiesContainer();
+			propertiesContainer = new PropertiesContainer();
 			propertiesContainer.addAll(properties);
 			String[] httpNames = this.getHttp().getName() != null?new String[]{this.getHttp().getName()}:new String[]{"default"};
 			//初始化Http连接池
 			ClientConfiguration.bootClientConfiguations(httpNames, propertiesContainer);
 		}
+		return propertiesContainer;
 	}
 	private void initDS(Db db){
 		DBConf temConf = new DBConf();

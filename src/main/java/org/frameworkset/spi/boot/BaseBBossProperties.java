@@ -16,13 +16,22 @@ package org.frameworkset.spi.boot;
  */
 
 import com.frameworkset.util.SimpleStringUtil;
+import org.frameworkset.spi.assemble.PropertiesContainer;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract class BaseBBossProperties {
-	private Db db;
-	private Http http;
+	protected Db db;
+	protected Http http;
+	protected String propertiesInterceptor;
+	public String getPropertiesInterceptor() {
+		return propertiesInterceptor;
+	}
+
+	public void setPropertiesInterceptor(String propertiesInterceptor) {
+		this.propertiesInterceptor = propertiesInterceptor;
+	}
 
 	 
 
@@ -665,12 +674,15 @@ public abstract class BaseBBossProperties {
 
 	public Map buildProperties(){
 		Map properties = new HashMap();
-		String name = this.getHttp().getName() != null? this.getHttp().getName()+".":"default.";
 
 
+		if(this.propertiesInterceptor != null){
+			properties.put(PropertiesContainer.propertiesInterceptorKey, propertiesInterceptor);
+		}
 
 		//##http连接池配置
 		if(this.getHttp() != null){
+			String name = this.getHttp().getName() != null? this.getHttp().getName()+".":"default.";
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getTimeoutConnection()))
 				properties.put(name + "http.timeoutConnection",this.getHttp().getTimeoutConnection());
 
