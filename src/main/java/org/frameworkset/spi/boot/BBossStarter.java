@@ -149,6 +149,8 @@ public class BBossStarter extends BaseBBossProperties{
 		temConf.setDbtype(db.getDbtype());
 		boolean ff = db.getColumnLableUpperCase() == null ? true:db.getColumnLableUpperCase().equals("true");
 		temConf.setColumnLableUpperCase(ff);
+		ff = db.getEnableShutdownHook() == null ? true:db.getEnableShutdownHook().equals("true");
+		temConf.setEnableShutdownHook(ff);
 		SQLManager.startPool(temConf);
 		/**
 		SQLUtil.startPool(db.getName(),//数据源名称

@@ -72,6 +72,14 @@ public abstract class BaseBBossProperties {
 		private String dbAdaptor;
 		private String jdbcFetchSize;
 		private String datasources;
+		private String enableShutdownHook;
+		public String getEnableShutdownHook() {
+			return enableShutdownHook;
+		}
+
+		public void setEnableShutdownHook(String enableShutdownHook) {
+			this.enableShutdownHook = enableShutdownHook;
+		}
 		public String getName() {
 			return name;
 		}
