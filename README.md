@@ -54,7 +54,7 @@ https://esdoc.bbossgroups.com/#/bboss-build
 #spring.bboss.default.http.authPassword=changeme
 ## ha proxy 集群负载均衡地址配置
 ##spring.bboss.default.http.hosts=192.168.137.1:808,192.168.137.1:809,192.168.137.1:810
-#spring.bboss.default.http.hosts=10.13.11.5:8082
+#spring.bboss.default.http.hosts=localhost:8082
 ## 健康检查服务
 #spring.bboss.default.http.health=/
 #spring.bboss.default.http.healthCheckInterval=1000
@@ -73,7 +73,7 @@ spring.bboss.default.db.name = firstds
 spring.bboss.default.db.user = root
 spring.bboss.default.db.password = 123456
 spring.bboss.default.db.driver = com.mysql.jdbc.Driver
-spring.bboss.default.db.url = jdbc:mysql://10.13.11.5:3306/apm
+spring.bboss.default.db.url = jdbc:mysql://127.0.0.1:3306/apm
 spring.bboss.default.db.usePool = true
 spring.bboss.default.db.validateSQL = select 1
 spring.bboss.default.db.showsql = true
@@ -121,7 +121,7 @@ spring.bboss.default.db.showsql = true
 #spring.bboss.second.http.authPassword=changeme
 ## ha proxy 集群负载均衡地址配置
 ##spring.bboss.second.http.hosts=192.168.137.1:808,192.168.137.1:809,192.168.137.1:810
-#spring.bboss.second.http.hosts=10.13.11.5:8082
+#spring.bboss.second.http.hosts=localhost:8082
 ## 健康检查服务
 #spring.bboss.second.http.health=/
 #spring.bboss.second.http.healthCheckInterval=1000
