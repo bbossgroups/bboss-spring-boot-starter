@@ -74,31 +74,33 @@ public class BBossStarter extends BaseBBossProperties{
 		}
 		if(this.getDb() == null ){
 			if(  properties.getDb() != null && properties.getDb().getUrl() != null){
-				try {
-					Class clz = Class.forName(temp);
-					PropertiesInterceptor propertiesInterceptor = (PropertiesInterceptor) clz.newInstance();
-					PropertyContext propertyContext = new PropertyContext();
-					propertyContext.setValue(properties.getDb());
-					propertiesInterceptor.convert(propertyContext);
-				}
-				catch (Exception e){
-					log.error("Init Ds "+temp,e);
-				}
+                if(temp != null && !temp.equals("")) {
+                    try {
+                        Class clz = Class.forName(temp);
+                        PropertiesInterceptor propertiesInterceptor = (PropertiesInterceptor) clz.newInstance();
+                        PropertyContext propertyContext = new PropertyContext();
+                        propertyContext.setValue(properties.getDb());
+                        propertiesInterceptor.convert(propertyContext);
+                    } catch (Exception e) {
+                        log.error("Init Ds " + temp, e);
+                    }
+                }
 				initDS(properties.getDb());
 			}
 		}
 		else{
 			if(getDb().getUrl() != null) {
-				try {
-					Class clz = Class.forName(temp);
-					PropertiesInterceptor propertiesInterceptor = (PropertiesInterceptor) clz.newInstance();
-					PropertyContext propertyContext = new PropertyContext();
-					propertyContext.setValue(getDb());
-					propertiesInterceptor.convert(propertyContext);
-				}
-				catch (Exception e){
-					log.error("Init Ds "+temp,e);
-				}
+                if(temp != null && !temp.equals("")) {
+                    try {
+                        Class clz = Class.forName(temp);
+                        PropertiesInterceptor propertiesInterceptor = (PropertiesInterceptor) clz.newInstance();
+                        PropertyContext propertyContext = new PropertyContext();
+                        propertyContext.setValue(getDb());
+                        propertiesInterceptor.convert(propertyContext);
+                    } catch (Exception e) {
+                        log.error("Init Ds " + temp, e);
+                    }
+                }
 				initDS(getDb());
 			}
 		}
