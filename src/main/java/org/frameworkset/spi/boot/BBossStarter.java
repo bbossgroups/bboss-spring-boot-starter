@@ -17,6 +17,7 @@ package org.frameworkset.spi.boot;/*
 import com.frameworkset.common.poolman.ConfigSQLExecutor;
 import com.frameworkset.common.poolman.util.DBConf;
 import com.frameworkset.common.poolman.util.SQLManager;
+import com.frameworkset.util.SimpleStringUtil;
 import org.frameworkset.spi.assemble.PropertiesContainer;
 import org.frameworkset.spi.assemble.PropertiesInterceptor;
 import org.frameworkset.spi.assemble.PropertyContext;
@@ -149,6 +150,8 @@ public class BBossStarter extends BaseBBossProperties{
 		temConf.setQueryfetchsize(db.getJdbcFetchSize() != null?Integer.parseInt(db.getJdbcFetchSize()):null);
 		temConf.setDbAdaptor(db.getDbAdaptor());
 		temConf.setDbtype(db.getDbtype());
+        temConf.setBalance(db.getBalance());
+        temConf.setEnableBalance(SimpleStringUtil.isNotEmpty(db.getEnableBalance())&& db.getEnableBalance().equals("true"));
 		boolean ff = db.getColumnLableUpperCase() == null ? true:db.getColumnLableUpperCase().equals("true");
 		temConf.setColumnLableUpperCase(ff);
 		ff = db.getEnableShutdownHook() == null ? true:db.getEnableShutdownHook().equals("true");

@@ -65,14 +65,29 @@ public abstract class BaseBBossProperties {
 		private String initSize;
 		private String showSql;
 		private String dbtype;
-
-
-
 		private String columnLableUpperCase ;
 		private String dbAdaptor;
 		private String jdbcFetchSize;
 		private String datasources;
 		private String enableShutdownHook;
+        private String balance;
+        private String enableBalance;
+
+        public void setEnableBalance(String enableBalance) {
+            this.enableBalance = enableBalance;
+        }
+
+        public String getEnableBalance() {
+            return enableBalance;
+        }
+
+        public void setBalance(String balance) {
+            this.balance = balance;
+        }
+
+        public String getBalance() {
+            return balance;
+        }
 		public String getEnableShutdownHook() {
 			return enableShutdownHook;
 		}
