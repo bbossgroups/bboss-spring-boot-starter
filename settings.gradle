@@ -1,1 +1,2 @@
-rootProject.name='bboss-spring-boot-starter'
+include 'bboss-spring-boot-starter'
+include 'bboss-spring-boot3-starter'

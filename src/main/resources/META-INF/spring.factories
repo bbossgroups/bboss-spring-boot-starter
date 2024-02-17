@@ -1,1 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=org.frameworkset.spi.boot.BBossAutoConfiguration

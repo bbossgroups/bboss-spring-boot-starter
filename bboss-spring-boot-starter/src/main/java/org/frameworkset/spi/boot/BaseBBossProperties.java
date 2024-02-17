@@ -680,7 +680,7 @@ public abstract class BaseBBossProperties {
 	 * # 如果指定为default，就采用DefaultHostnameVerifier,否则采用 SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER
 	 * http.hostnameVerifier =
 	 *
-	 * # dsl配置文件热加载扫描时间间隔，毫秒为单位，默认5秒扫描一次，<= 0时关闭扫描机制
+	 * # dsl配置文件热加载扫描时间间隔，毫秒为单位，默认5秒扫描一次，小于等于 0时关闭扫描机制
 	 * dslfile.refreshInterval = -1
 	 *
 	 *
