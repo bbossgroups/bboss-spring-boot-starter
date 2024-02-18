@@ -1,6 +1,15 @@
 # bboss-spring-boot-starter
 
-bboss 持久层和http proxy spring boot集成组件
+bboss 持久层和http proxy spring boot集成组件，兼容spring boot 1.x,2.x,3.x,+
+# 导入bboss starter
+## spring boot 1.x,2.x导入maven坐标
+
+```groovy
+api(
+[group: 'com.bbossgroups', name: 'bboss-spring-boot-starter', version: "${bboss_starter_version}", transitive: true],
+ )
+```
+
 ## spring boot 3.x导入maven坐标
 
 ```groovy
@@ -9,13 +18,7 @@ api(
  )
 ```
 
-## spring boot 1.x,2.x导入maven坐标
 
-```groovy
-api(
-[group: 'com.bbossgroups', name: 'bboss-spring-boot-starter', version: "${bboss_starter_version}", transitive: true],
- )
-```
 
 # 版本构建方法
 
