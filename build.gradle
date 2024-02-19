@@ -70,83 +70,6 @@ configure(subprojects) { subproject ->
 configure([project(":bboss-spring-boot3-starter"),
            //project(":bboss-elasticsearch"),
            project(":bboss-spring-boot-starter")]) { subproject ->
-//	ext.uploadtocenter=uploadArchivesToMavenCenter.equals("true")
-//	if(uploadtocenter)
-//	{
-//		signing {
-//		        //required { uploadtocenter }
-//		        sign configurations.archives
-//		 }
-//	}
-//	uploadArchives {
-//		  repositories {
-//
-//			    mavenDeployer {
-//
-//			beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-//	     	repository(url: sonatype_url) {
-//
-//			         authentication(userName: sonatype_username, password: sonatype_password)
-//			}
-//
-//
-//
-//
-//		      pom.project {
-//		        name project.name
-//		        packaging 'jar'
-//		        // optionally artifactId can be defined here
-//		        description PROJ_DESCRIPTION
-//		        url PROJ_WEBSITEURL
-//
-//		        scm {
-//		          connection scm_connection
-//		          developerConnection scm_developerConnection
-//		          url scm_url
-//		        }
-//
-//		        licenses {
-//		          license {
-//		            name PROJ_LICENCE_NAME
-//		            url PROJ_LICENCE_URL
-//		          }
-//		        }
-//
-//		        developers {
-//		          developer {
-//		            id DEVELOPER_ID
-//		            name DEVELOPER_NAME
-//		            email DEVELOPER_EMAIL
-//		          }
-//		        }
-//		      }
-//		    }
-//		  }
-//		}
-//
-//		publishing {
-//			publications {
-//				mavenJava(MavenPublication) {
-//
-//					from components.java
-//
-//					artifact sourcesJar
-//					artifact javaDocJar
-//
-//				}
-//			}
-//			repositories {
-//		        /**maven {
-//		            url "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-//		            credentials {
-//		                username ""
-//		                password ""
-//		            }
-//		        }*/
-//		        mavenLocal()
-//		    }
-//
-//		}
     publishing {
         publications {
             mavenJava(MavenPublication) {
@@ -156,15 +79,7 @@ configure([project(":bboss-spring-boot3-starter"),
                 from components.java
                 artifact sourcesJar
                 artifact javaDocJar
-//				versionMapping {
-//					usage('java-api') {
-//						fromResolutionOf('runtimeClasspath')
-//					}
-//					usage('java-runtime') {
-//						fromResolutionResult()
-//					}
-//				}
-//				from components.java
+
                 pom {
                     name = project.name
                     packaging = 'jar'
