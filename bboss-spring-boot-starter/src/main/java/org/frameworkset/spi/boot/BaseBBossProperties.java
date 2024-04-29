@@ -282,7 +282,22 @@ public abstract class BaseBBossProperties {
 		private String truststore;
 		private String trustPassword;
 		private String httpClientBuilderCallback;
-		/**
+        /**
+         * http接口org.apache.http.HttpRequestInterceptor清单，多个用逗号分隔
+         */
+        private String httpRequestInterceptors;
+
+        public String getHttpRequestInterceptors() {
+            return httpRequestInterceptors;
+        }
+        /**
+         * http接口org.apache.http.HttpRequestInterceptor清单，多个用逗号分隔
+         */
+        public void setHttpRequestInterceptors(String httpRequestInterceptors) {
+            this.httpRequestInterceptors = httpRequestInterceptors;
+        }
+
+        /**
 		 * 每次获取connection时校验连接，true，校验，false不校验，有性能开销，推荐采用
 		 * validateAfterInactivity来控制连接是否有效
 		 * 默认值false
@@ -771,6 +786,9 @@ public abstract class BaseBBossProperties {
 				properties.put(name + "http.trustPassword",this.getHttp().getTrustPassword());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getHttpClientBuilderCallback()))
 				properties.put(name + "http.httpClientBuilderCallback",this.getHttp().getHttpClientBuilderCallback());
+
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getHttpRequestInterceptors()))
+                properties.put(name + "http.httpRequestInterceptors",this.getHttp().getHttpRequestInterceptors());
 
 			/**
 			 *
