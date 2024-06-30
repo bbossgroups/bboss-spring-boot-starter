@@ -152,7 +152,7 @@ public class BBossStarter extends BaseBBossProperties{
 		temConf.setDbtype(db.getDbtype());
         temConf.setBalance(db.getBalance());
         temConf.setEnableBalance(SimpleStringUtil.isNotEmpty(db.getEnableBalance())&& db.getEnableBalance().equals("true"));
-		boolean ff = db.getColumnLableUpperCase() == null ? true:db.getColumnLableUpperCase().equals("true");
+		boolean ff = db.getColumnLableUpperCase() == null ? false:db.getColumnLableUpperCase().equals("true");
 		temConf.setColumnLableUpperCase(ff);
 		ff = db.getEnableShutdownHook() == null ? true:db.getEnableShutdownHook().equals("true");
 		temConf.setEnableShutdownHook(ff);
