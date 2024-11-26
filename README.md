@@ -6,7 +6,7 @@ bboss 持久层和http proxy spring boot集成组件，兼容spring boot 1.x,2.x
 
 ```groovy
 api(
-[group: 'com.bbossgroups', name: 'bboss-spring-boot-starter', version: '6.2.5', transitive: true],
+[group: 'com.bbossgroups', name: 'bboss-spring-boot-starter', version: '6.3.3', transitive: true],
  )
 ```
 
@@ -14,7 +14,7 @@ api(
 
 ```groovy
 api(
-[group: 'com.bbossgroups', name: 'bboss-spring-boot3-starter', version: '6.2.5', transitive: true],
+[group: 'com.bbossgroups', name: 'bboss-spring-boot3-starter', version: '6.3.3', transitive: true],
  )
 ```
 
