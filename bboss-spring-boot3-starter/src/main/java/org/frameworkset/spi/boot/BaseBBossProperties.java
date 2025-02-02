@@ -325,6 +325,9 @@ public abstract class BaseBBossProperties {
 		 */
 		private String authAccount;
 		private String authPassword;
+
+        private String apiKeyId;
+        private String apiKeySecret;
 		private String hosts;
 		private String health;
 		private String routing;
@@ -654,6 +657,22 @@ public abstract class BaseBBossProperties {
         public void setHttpRequestInterceptors(String httpRequestInterceptors) {
             this.httpRequestInterceptors = httpRequestInterceptors;
         }
+
+        public String getApiKeyId() {
+            return apiKeyId;
+        }
+
+        public void setApiKeyId(String apiKeyId) {
+            this.apiKeyId = apiKeyId;
+        }
+
+        public String getApiKeySecret() {
+            return apiKeySecret;
+        }
+
+        public void setApiKeySecret(String apiKeySecret) {
+            this.apiKeySecret = apiKeySecret;
+        }
     }
 
 
@@ -821,6 +840,10 @@ public abstract class BaseBBossProperties {
 				properties.put(name + "http.authAccount",this.getHttp().getAuthAccount());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getAuthPassword() ))
 				properties.put(name + "http.authPassword",this.getHttp().getAuthPassword());
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getApiKeyId()))
+                properties.put(name + "http.apiKeyId",this.getHttp().getApiKeyId());
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getApiKeySecret() ))
+                properties.put(name + "http.apiKeySecret",this.getHttp().getApiKeySecret());
 
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getEncodedAuthCharset()))
 				properties.put(name+"http.encodedAuthCharset",this.getHttp().getEncodedAuthCharset());
