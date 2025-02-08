@@ -19,6 +19,7 @@ import com.frameworkset.util.SimpleStringUtil;
 import org.frameworkset.spi.assemble.PropertiesContainer;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public abstract class BaseBBossProperties {
@@ -287,6 +288,7 @@ public abstract class BaseBBossProperties {
          */
         private String httpRequestInterceptors;
 
+        private Map<String,String> kerberos;
         public String getHttpRequestInterceptors() {
             return httpRequestInterceptors;
         }
@@ -674,7 +676,15 @@ public abstract class BaseBBossProperties {
 		public void setBackoffAuth(String backoffAuth) {
 			this.backoffAuth = backoffAuth;
 		}
-	}
+
+        public Map<String, String> getKerberos() {
+            return kerberos;
+        }
+
+        public void setKerberos(Map<String, String> kerberos) {
+            this.kerberos = kerberos;
+        }
+    }
 
 
 
@@ -785,7 +795,15 @@ public abstract class BaseBBossProperties {
 				properties.put(name + "http.customHttpRequestRetryHandler",this.getHttp().getCustomHttpRequestRetryHandler());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getEvictExpiredConnections()))
 				properties.put(name + "http.evictExpiredConnections",this.getHttp().getEvictExpiredConnections());
+            Map<String,String> kerberos = this.getHttp().getKerberos();
+            if(kerberos != null && !kerberos.isEmpty()){
+                Iterator<Map.Entry<String, String>> iterator = kerberos.entrySet().iterator();
+                while (iterator.hasNext()){
+                    Map.Entry<String, String> entry = iterator.next();
+                    properties.put(name+"http.kerberos."+entry.getKey(),entry.getValue());
+                }
 
+            }
 /**
  * keystoreAlias
  * trustAlias

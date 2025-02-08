@@ -19,6 +19,7 @@ import com.frameworkset.util.SimpleStringUtil;
 import org.frameworkset.spi.assemble.PropertiesContainer;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public abstract class BaseBBossProperties {
@@ -293,6 +294,7 @@ public abstract class BaseBBossProperties {
 		 */
 		private String staleConnectionCheckEnabled = "false";
 		private String encodedAuthCharset;
+        private Map<String,String> kerberos;
 		public void setEncodedAuthCharset(String encodedAuthCharset) {
 			this.encodedAuthCharset = encodedAuthCharset;
 		}
@@ -673,6 +675,14 @@ public abstract class BaseBBossProperties {
         public void setApiKeySecret(String apiKeySecret) {
             this.apiKeySecret = apiKeySecret;
         }
+
+        public Map<String, String> getKerberos() {
+            return kerberos;
+        }
+
+        public void setKerberos(Map<String, String> kerberos) {
+            this.kerberos = kerberos;
+        }
     }
 
 
@@ -785,6 +795,15 @@ public abstract class BaseBBossProperties {
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getEvictExpiredConnections()))
 				properties.put(name + "http.evictExpiredConnections",this.getHttp().getEvictExpiredConnections());
 
+            Map<String,String> kerberos = this.getHttp().getKerberos();
+            if(kerberos != null && !kerberos.isEmpty()){
+                Iterator<Map.Entry<String, String>> iterator = kerberos.entrySet().iterator();
+                while (iterator.hasNext()){
+                    Map.Entry<String, String> entry = iterator.next();
+                    properties.put(name+"http.kerberos."+entry.getKey(),entry.getValue());
+                }
+
+            }
 /**
  * keystoreAlias
  * trustAlias
