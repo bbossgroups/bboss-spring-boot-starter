@@ -30,7 +30,7 @@ dependencies {
 
     api (
             [group: 'com.bbossgroups', name: 'bboss-persistent', version: "${BBOSS_VERSION}", transitive: true],
-            [group: 'com.bbossgroups', name: 'bboss-http', version: "${BBOSS_HTTP_VERSION}", transitive: true],
+            [group: 'com.bbossgroups', name: 'bboss-http5', version: "${BBOSS_HTTP_VERSION}", transitive: true],
 
     )
 
