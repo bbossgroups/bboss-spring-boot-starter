@@ -347,7 +347,14 @@ public abstract class BaseBBossProperties {
 		private String healthCheckInterval;
 		private String failAllContinue;
 		private DiscoverService discoverService;
+        private String maxIdleTime;
+        public String getMaxIdleTime() {
+            return maxIdleTime;
+        }
 
+        public void setMaxIdleTime(String maxIdleTime) {
+            this.maxIdleTime = maxIdleTime;
+        }
 		public void setFailAllContinue(String failAllContinue) {
 			this.failAllContinue = failAllContinue;
 		}
@@ -859,6 +866,8 @@ public abstract class BaseBBossProperties {
 				properties.put(name + "http.authAccount",this.getHttp().getAuthAccount());
 			if(SimpleStringUtil.isNotEmpty(this.getHttp().getAuthPassword() ))
 				properties.put(name + "http.authPassword",this.getHttp().getAuthPassword());
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getMaxIdleTime()))
+                properties.put(name + "http.maxIdleTime",this.getHttp().getMaxIdleTime());
 
             if(SimpleStringUtil.isNotEmpty(this.getHttp().getApiKeyId()))
                 properties.put(name + "http.apiKeyId",this.getHttp().getApiKeyId());
