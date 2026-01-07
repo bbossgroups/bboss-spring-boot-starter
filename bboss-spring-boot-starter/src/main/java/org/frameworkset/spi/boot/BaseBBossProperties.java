@@ -340,6 +340,7 @@ public abstract class BaseBBossProperties {
 		private String authPassword;
 
         private String apiKeyId;
+        private String modelType;
         private String apiKeySecret;
 		private String hosts;
 		private String health;
@@ -691,6 +692,14 @@ public abstract class BaseBBossProperties {
         public void setKerberos(Map<String, String> kerberos) {
             this.kerberos = kerberos;
         }
+
+        public String getModelType() {
+            return modelType;
+        }
+
+        public void setModelType(String modelType) {
+            this.modelType = modelType;
+        }
     }
 
 
@@ -871,6 +880,8 @@ public abstract class BaseBBossProperties {
 
             if(SimpleStringUtil.isNotEmpty(this.getHttp().getApiKeyId()))
                 properties.put(name + "http.apiKeyId",this.getHttp().getApiKeyId());
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getModelType()))
+                properties.put(name + "http.modelType",this.getHttp().getModelType());
             if(SimpleStringUtil.isNotEmpty(this.getHttp().getApiKeySecret() ))
                 properties.put(name + "http.apiKeySecret",this.getHttp().getApiKeySecret());
 
