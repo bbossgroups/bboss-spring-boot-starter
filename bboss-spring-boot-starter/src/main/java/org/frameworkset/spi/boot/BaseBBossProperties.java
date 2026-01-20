@@ -289,6 +289,9 @@ public abstract class BaseBBossProperties {
         private String httpRequestInterceptors;
 
         private Map<String,String> kerberos;
+
+
+        
         public String getHttpRequestInterceptors() {
             return httpRequestInterceptors;
         }
@@ -700,6 +703,14 @@ public abstract class BaseBBossProperties {
         public void setModelType(String modelType) {
             this.modelType = modelType;
         }
+        private Map<String,String> extendConfigs;
+        public Map<String, String> getExtendConfigs() {
+            return extendConfigs;
+        }
+
+        public void setExtendConfigs(Map<String, String> extendConfigs) {
+            this.extendConfigs = extendConfigs;
+        }
     }
 
 
@@ -817,6 +828,16 @@ public abstract class BaseBBossProperties {
                 while (iterator.hasNext()){
                     Map.Entry<String, String> entry = iterator.next();
                     properties.put(name+"http.kerberos."+entry.getKey(),entry.getValue());
+                }
+
+            }
+
+            Map<String,String> extendConfigs = this.getHttp().getExtendConfigs();
+            if(extendConfigs != null && !extendConfigs.isEmpty()){
+                Iterator<Map.Entry<String, String>> iterator = extendConfigs.entrySet().iterator();
+                while (iterator.hasNext()){
+                    Map.Entry<String, String> entry = iterator.next();
+                    properties.put(name+"http.extendConfigs."+entry.getKey(),entry.getValue());
                 }
 
             }
