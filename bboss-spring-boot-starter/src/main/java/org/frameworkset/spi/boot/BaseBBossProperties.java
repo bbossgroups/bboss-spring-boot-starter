@@ -301,7 +301,14 @@ public abstract class BaseBBossProperties {
         public void setHttpRequestInterceptors(String httpRequestInterceptors) {
             this.httpRequestInterceptors = httpRequestInterceptors;
         }
+        private String httpResponseInterceptors;
+        public String getHttpResponseInterceptors() {
+            return httpResponseInterceptors;
+        }
 
+        public void setHttpResponseInterceptors(String httpResponseInterceptors) {
+            this.httpResponseInterceptors = httpResponseInterceptors;
+        }
         /**
 		 * 每次获取connection时校验连接，true，校验，false不校验，有性能开销，推荐采用
 		 * validateAfterInactivity来控制连接是否有效
@@ -863,6 +870,8 @@ public abstract class BaseBBossProperties {
 
             if(SimpleStringUtil.isNotEmpty(this.getHttp().getHttpRequestInterceptors()))
                 properties.put(name + "http.httpRequestInterceptors",this.getHttp().getHttpRequestInterceptors());
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getHttpResponseInterceptors()))
+                properties.put(name + "http.httpResponseInterceptors",this.getHttp().getHttpResponseInterceptors());
 
 			/**
 			 *

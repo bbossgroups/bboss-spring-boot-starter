@@ -302,6 +302,14 @@ public abstract class BaseBBossProperties {
 		public String getEncodedAuthCharset() {
 			return encodedAuthCharset;
 		}
+        private String httpResponseInterceptors;
+        public String getHttpResponseInterceptors() {
+            return httpResponseInterceptors;
+        }
+
+        public void setHttpResponseInterceptors(String httpResponseInterceptors) {
+            this.httpResponseInterceptors = httpResponseInterceptors;
+        }
         private Map<String,String> extendConfigs;
         public Map<String, String> getExtendConfigs() {
             return extendConfigs;
@@ -859,6 +867,8 @@ public abstract class BaseBBossProperties {
 
             if(SimpleStringUtil.isNotEmpty(this.getHttp().getHttpRequestInterceptors()))
                 properties.put(name + "http.httpRequestInterceptors",this.getHttp().getHttpRequestInterceptors());
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getHttpResponseInterceptors()))
+                properties.put(name + "http.httpResponseInterceptors",this.getHttp().getHttpResponseInterceptors());
 
 			/**
 			 *
