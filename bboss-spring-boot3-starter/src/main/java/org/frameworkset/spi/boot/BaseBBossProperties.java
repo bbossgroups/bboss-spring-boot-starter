@@ -353,6 +353,14 @@ public abstract class BaseBBossProperties {
 		private String failAllContinue;
 		private DiscoverService discoverService;
         private String maxIdleTime;
+        private String agentAdapter;
+        public String getAgentAdapter() {
+            return agentAdapter;
+        }
+
+        public void setAgentAdapter(String agentAdapter) {
+            this.agentAdapter = agentAdapter;
+        }
         public String getMaxIdleTime() {
             return maxIdleTime;
         }
@@ -908,6 +916,8 @@ public abstract class BaseBBossProperties {
                 properties.put(name + "http.apiKeyId",this.getHttp().getApiKeyId());
             if(SimpleStringUtil.isNotEmpty(this.getHttp().getModelType()))
                 properties.put(name + "http.modelType",this.getHttp().getModelType());
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getAgentAdapter()))
+                properties.put(name + "http.agentAdapter",this.getHttp().getAgentAdapter());
             if(SimpleStringUtil.isNotEmpty(this.getHttp().getApiKeySecret() ))
                 properties.put(name + "http.apiKeySecret",this.getHttp().getApiKeySecret());
 
