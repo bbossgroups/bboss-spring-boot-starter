@@ -369,6 +369,40 @@ public abstract class BaseBBossProperties {
         private String proxyUser;
         private String proxyPassword;
 
+
+        private String showDsl;
+
+        private String authorTokenFunction;
+
+
+
+        /**
+         * 默认25分钟
+         */
+        private String authorTokenExpiredTime = "1500000";
+        public String getShowDsl() {
+            return showDsl;
+        }
+
+        public void setShowDsl(String showDsl) {
+            this.showDsl = showDsl;
+        }
+
+        public String getAuthorTokenFunction() {
+            return authorTokenFunction;
+        }
+
+        public void setAuthorTokenFunction(String authorTokenFunction) {
+            this.authorTokenFunction = authorTokenFunction;
+        }
+
+        public String getAuthorTokenExpiredTime() {
+            return authorTokenExpiredTime;
+        }
+
+        public void setAuthorTokenExpiredTime(String authorTokenExpiredTime) {
+            this.authorTokenExpiredTime = authorTokenExpiredTime;
+        }
         public String getProxyHost() {
             return proxyHost;
         }
@@ -994,11 +1028,23 @@ public abstract class BaseBBossProperties {
                 properties.put(name + "http.proxyUser",this.getHttp().getProxyUser());
             }
 
-
             if(SimpleStringUtil.isNotEmpty(this.getHttp().getProxyPassword())){
                 properties.put(name + "http.proxyPassword",this.getHttp().getProxyPassword());
             }
+            
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getShowDsl())){
+                properties.put(name + "http.showDsl",this.getHttp().getShowDsl());
+            }
 
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getAuthorTokenFunction())){
+                properties.put(name + "http.authorTokenFunction",this.getHttp().getAuthorTokenFunction());
+            }
+
+            if(SimpleStringUtil.isNotEmpty(this.getHttp().getAuthorTokenExpiredTime())){
+                properties.put(name + "http.authorTokenExpiredTime",this.getHttp().getAuthorTokenExpiredTime());
+            }
+
+    
             
             if(SimpleStringUtil.isNotEmpty(this.getHttp().getModelType()))
                 properties.put(name + "http.modelType",this.getHttp().getModelType());
