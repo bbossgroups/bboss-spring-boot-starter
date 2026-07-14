@@ -72,7 +72,7 @@ configure(subprojects) { subproject ->
 }
 
 configure([project(":bboss-spring-boot3-starter"),
-           //project(":bboss-elasticsearch"),
+           project(":bboss-spring-boot4-starter"),
            project(":bboss-spring-boot-starter")]) { subproject ->
     publishing {
         publications {

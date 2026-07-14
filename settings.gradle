@@ -1,2 +1,3 @@
 include 'bboss-spring-boot-starter'
 include 'bboss-spring-boot3-starter'
+include 'bboss-spring-boot4-starter'
